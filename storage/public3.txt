@@ -1,0 +1,33 @@
+
+  <div itemscope itemtype="http://schema.org/Product" class="item-box">
+    <div class="item-box__image-wrapper">
+      <a href="https://item.fril.jp/fbd054f2ce345b0e8f3496f7a2e31e2d" class="link_search_image" title="古着 ハーレーダビッドソン Harley-Davidson 両面プリント 袖プリント スウェットフルジップパーカー メンズXL /eaa289718 ハーレーダビッドソン(Harley Davidson)のメンズのトップス(スウェット)の商品詳細ページへのリンク" onclick="gaItemClick();">
+        <meta itemprop="image" content="https://img.fril.jp/img/565377635/m/1740472163.jpg?1669115396">
+        <img src="https://asset.fril.jp/assets/new_web/item_square_dummy-073371606399aacba3459bffff9f1412fdd6ede983e84c8ea8b71dde7f96214e.png" data-original="https://img.fril.jp/img/565377635/m/1740472163.jpg?1669115396" class="img-responsive lazy" alt="ハーレーダビッドソン(Harley Davidson)の古着 ハーレーダビッドソン Harley-Davidson 両面プリント 袖プリント スウェットフルジップパーカー メンズXL /eaa289718(スウェット)">
+        <noscript><img src="https://img.fril.jp/img/565377635/m/1740472163.jpg?1669115396" alt="ハーレーダビッドソン(Harley Davidson)の古着 ハーレーダビッドソン Harley-Davidson 両面プリント 袖プリント スウェットフルジップパーカー メンズXL /eaa289718(スウェット)"></noscript>
+        
+        <div class="item-box__icon-section">
+        </div>
+      </a>
+    </div>
+    <div class="item-box__text-wrapper">
+      <div class="item-box__item-sub-name">
+            <a href="/brand/4887" class="brand-name" title="Harley Davidson(ハーレーダビッドソン)の商品一覧ページへのリンク">Harley Davidson</a>
+        <meta itemprop="brand" content="Harley Davidson">
+      </div>
+      <p class="item-box__item-name">
+        <a href="https://item.fril.jp/fbd054f2ce345b0e8f3496f7a2e31e2d" class="link_search_title" title="古着 ハーレーダビッドソン Harley-Davidson 両面プリント 袖プリント スウェットフルジップパーカー メンズXL /eaa289718 ハーレーダビッドソン(Harley Davidson)のメンズのトップス(スウェット)の商品詳細ページへのリンク" onclick="ga('send', 'event', 'ui_action', 'search', 'click_search_item', {'dimension1': '565377635'});">
+          <span itemprop="name">古着 ハーレーダビッドソン Harley-Davidson 両面プリント 袖プリント スウェットフルジップパーカー メンズXL /eaa289718</span>
+        </a>
+      </p>
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <p class="item-box__item-price"><span itemprop="priceCurrency" data-content="JPY">¥</span><span itemprop="price" data-content="8520">8,520</span></p>
+      </div>
+
+      <div class="item-box__like_area">
+          <div class="like_item_off">
+            <a class="small" href="#" data-toggle="modal" data-target="#directSignupModal"><i class="ga-class ga-items-likebutton list-icon-like icon_tl_heart"></i></a>
+          </div>
+      </div>
+    </div>
+  </div>

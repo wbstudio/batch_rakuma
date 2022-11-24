@@ -1,0 +1,1 @@
+<span itemprop="priceCurrency" data-content="JPY">¥</span><span itemprop="price" data-content="8520">8,520</span>
