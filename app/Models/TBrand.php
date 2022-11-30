@@ -48,7 +48,7 @@ class TBrand extends Model
             'updated_at' => now(),
         ];
 
-        $query->insert($value);
-        return $query->id;
+        $brandId = $query->insertGetId($value);
+        return $brandId;
     }
 }

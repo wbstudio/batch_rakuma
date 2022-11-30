@@ -43,6 +43,7 @@ class ItemInfoGetBatch extends Command
         $url_page = '&page=';
         $itemDataList =[];
         Log::debug("---【START】---------------------------");
+        $startAll = microtime(true);
         foreach ($soldStatus as $status) {
             foreach ($categories as $category) {
                 foreach ($pages as $page) {
@@ -53,15 +54,13 @@ class ItemInfoGetBatch extends Command
                         $url = $url_base . $category . $url_sort . $url_search . $url_page . $page;
 
                     }
+                    dump($url);
                     Log::debug('【start】' . $url);
-                    // $url = 'https://fril.jp/s?query=L%2828%29%E3%80%917+For+All+Mankind+%E3%83%AC%E3%83%87%E3%82%A3%E3%83%BC';
-                    // $url = 'https://fril.jp/s?query=Hikaru+172005%E6%A7%98%E5%B0%82%E7%94%A8%E3%80%80STUSSY+%E3%83%91%E3%83%BC%E3%82%AB%E3%83%BC&_gl=1*ew49k7*_ga*ODQxNDM4MzYyLjE2Njg0MTA3OTc.*_ga_7KV9PBS698*MTY2OTYxNjg4OC4xNS4xLjE2Njk2MTY5MTQuMzQuMC4w';
                     $crawler = Goutte::request('GET', $url);
                     $crawler->filter('.item')->each(function ($node)  use (&$itemDataList){
                         //個別ページへのリンク
                         $link = $node->filter(".item-box .item-box__image-wrapper a")->attr('href');
                         $itemCode = $this->makeItemCOde($link);
-                        dump('-----code::' . $itemCode . '------------------');
                         //タイトル
                         $title = $node->filter(".item-box .item-box__image-wrapper a")->attr('title');
                         //価格
@@ -84,7 +83,6 @@ class ItemInfoGetBatch extends Command
                         //ブランド
                         if (count($node->filter(".item-box .item-box__text-wrapper .brand-name"))) {
                             $itemDataList[$itemCode]['brand_name'] = $node->filter(".item-box .item-box__text-wrapper .brand-name")->text();
-                            dump('brand::' . $itemDataList[$itemCode]['brand_name']);
                         }
                         //画像
                         $image = $node->filter(".item-box .item-box__image-wrapper a noscript img")->attr('src');
@@ -106,8 +104,8 @@ class ItemInfoGetBatch extends Command
                     });
                     $endPage = microtime(true);
                     Log::debug('【ページ情報取得時間】' . $endPage - $startPage . '秒');
-                    dump('DB');
                     if (isset($itemDataList)) {
+                        dump(count($itemDataList) . '件');
                         foreach ($itemDataList as $key => $itemData) {
                             //ブランド処理
                             if (isset($itemData['brand_name'])) {
@@ -117,7 +115,7 @@ class ItemInfoGetBatch extends Command
                                     $itemData['brand_id'] = $mbTBrand->insertBrandData($itemData);
                                 } else {
                                     //UPDATE(カテゴリーのみ)
-                                    $itemData['brand_id'] = $existenceBrand['id'];
+                                    $itemData['brand_id'] = $existenceBrand->id;
                                 }
                             }
 
@@ -140,16 +138,19 @@ class ItemInfoGetBatch extends Command
                             }
                             unset($itemDataList[$key]);
                         }
+                        unset($existenceBrand, $existenceItem);
                     }
                     $endDB = microtime(true);
                     Log::debug('【DB処理時間】' . $endDB - $endPage . '秒');
-                    unset($itemDataList);
-                    //Modelへ
-                    sleep(3);
+                    if ($endDB- $startPage < 5) {
+                        sleep(3);
+                    }
+                    unset($itemDataList, $startPage, $endPage, $endDB);
                 }
             }
         }
-        
+        $endAll = microtime(true);        
+        Log::debug("全体の時間：" . $endAll - $startAll);
         Log::debug("---【END】---------------------------");
     }
 
